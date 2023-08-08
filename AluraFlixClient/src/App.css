@@ -1,0 +1,65 @@
+/*--------------
+                -   
+     General    -
+                -
+--------------*/
+*,html,body{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.active{
+    padding: .5rem 1rem;
+    background-color: #444;
+    color: #ddd;
+    border-radius: 25px;
+}
+
+a{
+    text-decoration: none;
+}
+.content{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/*--------------
+                -   
+     Fuentes    -
+                -
+--------------*/
+
+
+@font-face {
+    font-family: 'BebasNeue';
+    src: url('./assets/font/BebasNeue-Regular.otf') format('opentype'),
+         url('./assets/font/BebasNeue-Regular.ttf') format('truetype');
+  }
+
+/*--------------
+                -   
+       NAV      -
+                -
+--------------*/
+
+nav{
+    width: -webkit-fill-available;
+    background-color: #000;
+}
+.ulNav{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+.titleNetFlix{
+    font-family: 'BebasNeue', sans-serif;
+    font-size: 2rem;
+    
+}
+
+.titleNetFlix a{
+    color: #257be5;
+}
