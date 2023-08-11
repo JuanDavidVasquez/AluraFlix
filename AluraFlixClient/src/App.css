@@ -10,7 +10,6 @@
 }
 .active{
     padding: .5rem 1rem;
-    background-color: #444;
     color: #ddd;
     border-radius: 25px;
 }
@@ -46,6 +45,7 @@ a{
 nav{
     width: -webkit-fill-available;
     background-color: #000;
+    border-bottom: .3rem solid #257be5;
 }
 .ulNav{
     display: flex;
@@ -60,6 +60,59 @@ nav{
     
 }
 
+.newVideo a{
+    color: #ddd;
+    border: 1px solid #ddd;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    transition: all .5s ease;
+}
+.newVideo a:hover{
+    border: none;
+    background-color: #ddd;
+    color: #257be5;
+    transition: all .5s ease;
+}
 .titleNetFlix a{
     color: #257be5;
+}
+
+/*--------------
+                -   
+    Sidebar     -
+                -
+--------------*/
+
+.sidebar{
+    height: 70vh;
+    padding: 5rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+    background-color: #1e1b53;
+}
+
+.data_sidebar{
+    display: grid;
+    grid-template-rows: 40% 20% 40%;
+    gap: 1rem; 
+    color: #ddd;
+}
+.data_sidebar button{
+    width: fit-content;
+    padding: .5rem .7rem;
+    font-size: 2.5rem;
+    background-color: #6bd1ff;
+    color: #ddd;
+    border: none;
+    border-radius: 5px;
+}
+.data_sidebar p{
+    max-width: 35rem;
+}
+.data_sidebar h2{
+    font-weight: 100;
+    font-size: 2.5rem;
 }
