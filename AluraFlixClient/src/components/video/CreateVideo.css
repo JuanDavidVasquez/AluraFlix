@@ -1,19 +1,9 @@
-h2 {
+.create_video_container {
     text-align: center;
     padding: 5rem;
-    font-size: 3rem;
-}
-
-form {
-    width: 70vw;
-}
-
-.form_create {
-    width: 100%;
-    display: grid;
-}
-
-.custom-input {
+  }
+  
+  .custom-input {
     width: 100%;
     min-height: 3rem;
     border: none;
@@ -21,12 +11,49 @@ form {
     background-color: #504444;
     padding: 0.5rem;
     margin-bottom: 1rem;
-}
-
-.custom-input:focus {
-    border-bottom: 1.2rem solid red;
+    color: white;
+  }
+  
+  .custom-input.error:focus {
+    border-bottom: 1.2rem solid #257be5;
     outline: none;
-}
-.textarea{
+  }
+  
+  .textarea {
     min-height: 7rem;
-}
+  }
+  
+  .button_create {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  
+  .button_form {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .submit,
+  .cleaning {
+    background-color: #2a7ae4;
+    color: #ddd;
+    border: none;
+    border-radius: 5px;
+    padding: 0.7rem 1.7rem;
+    cursor: pointer;
+    transition: all .5s ease;
+  }
+  .submit:hover,
+  .cleaning:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 0px 9px 0px #ccc;
+  }
+  .cleaning {
+    background-color: #9e9e9e;
+    color: #000;
+    font-weight: 800;
+  }
+  

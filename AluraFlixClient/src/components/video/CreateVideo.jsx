@@ -8,8 +8,13 @@ export default function CreateVideo() {
   const [categoria, setCategoria] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [codigoSeguridad, setCodigoSeguridad] = useState("");
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleGuardar = () => {
+    if (!titulo || !videoLink || !imagenLink || !categoria || !descripcion || !codigoSeguridad) {
+      setFormSubmitted(true);
+      return;
+    }
     // Implementa la lógica para guardar los datos
   };
 
@@ -20,6 +25,7 @@ export default function CreateVideo() {
     setCategoria("");
     setDescripcion("");
     setCodigoSeguridad("");
+    setFormSubmitted(false);
   };
 
   const handleNuevaCategoria = () => {
@@ -31,67 +37,75 @@ export default function CreateVideo() {
       <h2>Nuevo Video</h2>
       <form>
         <div className="form_create">
-          <input
+          <input 
+            required
             placeholder="Título:"
             type="text"
-            className="custom-input"
+            className={`custom-input ${formSubmitted && !titulo && "error"}`}
             value={titulo}
             onChange={(e) => setTitulo(e.target.value)}
           />
 
           <input
+            required
             placeholder="Link del Video:"
             type="text"
-            className="custom-input"
+            className={`custom-input ${formSubmitted && !videoLink && "error"}`}
             value={videoLink}
             onChange={(e) => setVideoLink(e.target.value)}
           />
 
           <input
+            required
             placeholder="Link de la Imagen del Video:"
             type="text"
-            className="custom-input"
+            className={`custom-input ${formSubmitted && !imagenLink && "error"}`}
             value={imagenLink}
             onChange={(e) => setImagenLink(e.target.value)}
           />
 
-          <select
-            className="custom-input"
+          <select required
+            className={`custom-input ${formSubmitted && !categoria && "error"}`}
             value={categoria}
             onChange={(e) => setCategoria(e.target.value)}
           >
-            <option selected disabled>
+            <option value="" disabled>
               Escoja una Categoría
             </option>
             <option value="Back-end">Back-end</option>
             <option value="Front-end">Front-end</option>
           </select>
 
-          <textarea
+          <textarea 
+            required
             placeholder="Descripción:"
-            className="custom-input textarea"
+            className={`custom-input textarea ${formSubmitted && !descripcion && "error"}`}
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
           />
 
           <input
+            required
             placeholder="Código de Seguridad:"
             type="text"
-            className="custom-input"
+            className={`custom-input ${formSubmitted && !codigoSeguridad && "error"}`}
             value={codigoSeguridad}
             onChange={(e) => setCodigoSeguridad(e.target.value)}
           />
         </div>
-
-        <button type="button" onClick={handleGuardar}>
-          Guardar
-        </button>
-        <button type="button" onClick={handleLimpiar}>
-          Limpiar
-        </button>
-        <button type="button" onClick={handleNuevaCategoria}>
-          Nueva Categoría
-        </button>
+        <div className="button_create">
+          <div className="button_form">
+            <button type="button" className="submit" onClick={handleGuardar}>
+              Guardar
+            </button>
+            <button type="button" className="cleaning" onClick={handleLimpiar}>
+              Limpiar
+            </button>
+          </div>
+          <button type="button" className="submit" onClick={handleNuevaCategoria}>
+            Nueva Categoría
+          </button>
+        </div>
       </form>
     </div>
   );
