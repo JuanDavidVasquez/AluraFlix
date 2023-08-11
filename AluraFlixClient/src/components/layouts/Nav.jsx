@@ -9,7 +9,7 @@ export default function Nav() {
           <NavLink to="/home" className={({isActive})=> isActive ? "active" : ""}>ALURAFLIX</NavLink>
         </li>
         <li className='item-nav newVideo'>
-          <NavLink to="/create-video" className={({isActive})=> isActive ? "active" : ""}>Nuevo Video</NavLink>
+          <NavLink to="/create-video" className={({isActive})=> isActive ? "actives" : ""}>Nuevo Video</NavLink>
         </li>
       </ul>
     </nav>
