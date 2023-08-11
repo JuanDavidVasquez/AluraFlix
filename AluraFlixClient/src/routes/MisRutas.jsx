@@ -2,6 +2,7 @@ import React from 'react'
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import Home from '../components/Home';
 import Header from '../components/layouts/Header';
+import Footer from '../components/layouts/Footer';
 import CreateVideo from '../components/video/CreateVideo';
 
 
@@ -16,6 +17,7 @@ export default function MisRutas() {
         <Route path='/home' element={<Home/>}/>
         <Route path='/create-video' element={<CreateVideo/>}/>
       </Routes>
+      <Footer/>
     </section>
   </BrowserRouter>
   )

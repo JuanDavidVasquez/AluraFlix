@@ -6,7 +6,7 @@ export default function Nav() {
     <nav>
       <ul className='ulNav'>
         <li className='item-nav titleNetFlix'>
-          <NavLink to="/home" className={({isActive})=> isActive ? "active" : ""}> ALURAFLIX </NavLink>
+          <NavLink to="/home" className={({isActive})=> isActive ? "active" : ""}>ALURAFLIX</NavLink>
         </li>
         <li className='item-nav newVideo'>
           <NavLink to="/create-video" className={({isActive})=> isActive ? "active" : ""}>Nuevo Video</NavLink>

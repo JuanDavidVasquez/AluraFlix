@@ -1,5 +1,17 @@
 /*--------------
                 -   
+     Fuentes    -
+                -
+--------------*/
+
+
+@font-face {
+    font-family: 'BebasNeue';
+    src: url('./assets/font/BebasNeue-Regular.otf') format('opentype'),
+         url('./assets/font/BebasNeue-Regular.ttf') format('truetype');
+  }
+/*--------------
+                -   
      General    -
                 -
 --------------*/
@@ -7,6 +19,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    color: #ddd;
 }
 .active{
     padding: .5rem 1rem;
@@ -22,19 +35,12 @@ a{
     padding: 0;
     margin: 0;
 }
-
-/*--------------
-                -   
-     Fuentes    -
-                -
---------------*/
-
-
-@font-face {
+h2{
     font-family: 'BebasNeue';
-    src: url('./assets/font/BebasNeue-Regular.otf') format('opentype'),
-         url('./assets/font/BebasNeue-Regular.ttf') format('truetype');
-  }
+    letter-spacing: .2rem;
+    font-weight: 100;
+}
+
 
 /*--------------
                 -   
@@ -114,5 +120,93 @@ nav{
 }
 .data_sidebar h2{
     font-weight: 100;
+    font-size: 2.5rem;
+}
+/*--------------
+                -   
+    videos      -
+                -
+--------------*/
+
+.videos_container{
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 1rem;
+}
+.card_video{
+    border: 1px solid #444;
+    border-radius: 2px;
+    padding: 1rem;
+    margin: 1rem;
+    height: 200px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+.control-dots{
+    display: none;
+}
+
+/*--------------
+                -   
+  Create videos -
+                -
+--------------*/
+
+.create_video_container{
+    height: 100vh;
+    background-color: #000;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+}
+
+/*--------------
+                -   
+    home        -
+                -
+--------------*/
+.home_container{
+    background-color: #000;
+}
+
+/*--------------
+                -   
+    footer      -
+                -
+--------------*/
+
+.footer{
+    width: -webkit-fill-available;
+    background-color: #000;
+    border-top: .3rem solid #257be5;
+    color: #257be5;
+    height: 12vh;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    font-size: 3rem;
+    font-family: 'BebasNeue';
+}
+.spans{
+    display: flex;
+    align-items: flex-start;
+}
+.footer span{
+    display: flex;
+    
+}
+.f2,.f8{
+    font-size: 2.8rem;
+}
+.f3,.f7{
+    font-size: 2.7rem;
+}
+.f4,.f6{
+    font-size: 2.6rem;
+}
+.f5,.f6{
     font-size: 2.5rem;
 }
