@@ -38,8 +38,10 @@ const CustomCarousel = ({ data }) => {
       ]}
     >
       {data.map((item, index) => (
-        <div className="card_video" key={index}>
-          <div>{item.title}</div>
+        <div className="card_video" key={index}  style={{ backgroundImage: `url(${item.imagen})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+        <div>
+            {item.title}
+          </div>
         </div>
       ))}
     </Carousel>

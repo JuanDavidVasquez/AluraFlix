@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios"; // Asegúrate de importar axios
 import "./CreateVideo.css";
 
 export default function CreateVideo() {
@@ -15,7 +16,26 @@ export default function CreateVideo() {
       setFormSubmitted(true);
       return;
     }
-    // Implementa la lógica para guardar los datos
+
+    const formData = {
+      titulo,
+      videoLink,
+      imagenLink,
+      categoria,
+      descripcion,
+      codigoSeguridad,
+    };
+
+    axios.post("http://127.0.0.1:8000/api/video-save", formData)
+      .then((response) => {
+        // Maneja la respuesta aquí si es necesario
+        console.log("Video guardado con éxito:", response.data);
+        // Limpia el formulario
+        handleLimpiar();
+      })
+      .catch((error) => {
+        console.error("Error al guardar el video:", error);
+      });
   };
 
   const handleLimpiar = () => {
