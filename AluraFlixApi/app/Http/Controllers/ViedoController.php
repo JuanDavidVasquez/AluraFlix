@@ -91,6 +91,9 @@ class ViedoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $video = Videos::findOrFail($id);
+        $video->delete();
+    
+        return response()->json(['message' => 'Video eliminado correctamente']);
     }
 }

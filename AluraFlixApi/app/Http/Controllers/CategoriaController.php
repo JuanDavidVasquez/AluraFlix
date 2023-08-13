@@ -48,7 +48,9 @@ class CategoriaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $categoria = Categorias::find($id);
+
+        return response()->json($categoria);
     }
 
     /**
@@ -64,7 +66,17 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $categoria = Categorias::findOrFail($id);
+
+       
+        $categoria->title = $request->title;
+        $categoria->description = $request->description;
+        $categoria->color = $request->color;
+        $categoria->codigoCategorias = $request->codigoCategorias;
+
+        $categoria->update();
+
+        return response()->json($categoria);
     }
 
     /**
@@ -72,6 +84,9 @@ class CategoriaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $categoria = Categorias::findOrFail($id);
+        $categoria->delete();
+    
+        return response()->json(['message' => 'categoria eliminado correctamente']);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ViedoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,7 @@ Route::controller(ViedoController::class)->group(function(){
     Route::get('/video-show/{id}', 'show');
     Route::put('/video-update/{id}', 'update');
     Route::post('/video-save', 'store');
+    Route::delete('/video-destroy/{id}', 'destroy');
 });
 
 /*------------------
@@ -38,9 +40,10 @@ Route::controller(ViedoController::class)->group(function(){
                     -
 -------------------*/
 
-Route::controller(ViedoController::class)->group(function(){
+Route::controller(CategoriaController::class)->group(function(){
     Route::get('/categorias', 'index');
     Route::get('/categoria-show/{id}', 'show');
     Route::put('/categoria-update/{id}', 'update');
     Route::post('/categoria-save', 'store');
+    Route::delete('/categoria-destroy/{id}', 'destroy');
 });

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./CreateVideo.css";
+import { NavLink } from 'react-router-dom';
 
 export default function CreateVideo() {
   const [title, setTitle] = useState("");
@@ -10,6 +11,23 @@ export default function CreateVideo() {
   const [description, setDescription] = useState("");
   const [codigo, setCodigo] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [caregoriasData, setCategoriasData] =useState([]);
+
+
+   
+    const fetchCategorias = () => {
+      axios
+        .get("http://127.0.0.1:8000/api/categorias")
+        .then((response) => {
+          setCategoriasData(response.data);
+        })
+        .catch((error) => {
+          console.error("Error al obtener datos:", error);
+        });
+    };
+useEffect(()=>{
+  fetchCategorias();
+},[]);
 
   const handleGuardar = () => {
     if (!title || !videoLink || !imagenLink || !categoria || !description || !codigo) {
@@ -48,9 +66,7 @@ export default function CreateVideo() {
     setFormSubmitted(false);
   };
 
-  const handleNuevaCategoria = () => {
-    // Implementa la lógica para agregar una nueva categoría
-  };
+
 
   return (
     <div className="create_video_container">
@@ -85,17 +101,21 @@ export default function CreateVideo() {
           />
 
           <select
-            required
-            className={`custom-input ${formSubmitted && !categoria && "error"}`}
-            value={categoria}
-            onChange={(e) => setCategoria(e.target.value)}
-          >
-            <option value="" disabled>
-              Escoja una Categoría
+          required
+          className={`custom-input ${formSubmitted && !categoria && "error"}`}
+          value={categoria}
+          onChange={(e) => setCategoria(e.target.value)}
+        >
+          <option value="" disabled>
+            Escoja una Categoría
+          </option>
+          {caregoriasData.map((categoria) => (
+            <option key={categoria.id} value={categoria.title}>
+              {categoria.title}
             </option>
-            <option value="Back-end">Back-end</option>
-            <option value="Front-end">Front-end</option>
-          </select>
+          ))}
+        </select>
+
 
           <textarea
             required
@@ -123,8 +143,8 @@ export default function CreateVideo() {
               Limpiar
             </button>
           </div>
-          <button type="button" className="submit" onClick={handleNuevaCategoria}>
-            Nueva Categoría
+          <button type="button"  className="submit">
+          <NavLink to="/create-categoria">Nueva Categoría</NavLink> 
           </button>
         </div>
       </form>
