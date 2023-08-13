@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
+use App\Models\Categorias;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -11,7 +12,9 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $categorias = Categorias::all();
+
+        return response()->json($categorias);
     }
 
     /**
@@ -27,7 +30,17 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = new Categorias();
+
+       
+        $categoria->title = $request->title;
+        $categoria->description = $request->description;
+        $categoria->color = $request->color;
+        $categoria->codigoCategorias = $request->codigoCategorias;
+
+        $categoria->save();
+
+        return response()->json($categoria);
     }
 
     /**

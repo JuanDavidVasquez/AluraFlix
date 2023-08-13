@@ -1,29 +1,29 @@
 import React, { useState } from "react";
-import axios from "axios"; // Asegúrate de importar axios
+import axios from "axios";
 import "./CreateVideo.css";
 
 export default function CreateVideo() {
-  const [titulo, setTitulo] = useState("");
+  const [title, setTitle] = useState("");
   const [videoLink, setVideoLink] = useState("");
   const [imagenLink, setImagenLink] = useState("");
   const [categoria, setCategoria] = useState("");
-  const [descripcion, setDescripcion] = useState("");
-  const [codigoSeguridad, setCodigoSeguridad] = useState("");
+  const [description, setDescription] = useState("");
+  const [codigo, setCodigo] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleGuardar = () => {
-    if (!titulo || !videoLink || !imagenLink || !categoria || !descripcion || !codigoSeguridad) {
+    if (!title || !videoLink || !imagenLink || !categoria || !description || !codigo) {
       setFormSubmitted(true);
       return;
     }
 
     const formData = {
-      titulo,
-      videoLink,
-      imagenLink,
+      title,
+      description,
+      link: videoLink,
       categoria,
-      descripcion,
-      codigoSeguridad,
+      codigo,
+      imagen: imagenLink,
     };
 
     axios.post("http://127.0.0.1:8000/api/video-save", formData)
@@ -39,12 +39,12 @@ export default function CreateVideo() {
   };
 
   const handleLimpiar = () => {
-    setTitulo("");
+    setTitle("");
     setVideoLink("");
     setImagenLink("");
     setCategoria("");
-    setDescripcion("");
-    setCodigoSeguridad("");
+    setDescription("");
+    setCodigo("");
     setFormSubmitted(false);
   };
 
@@ -57,18 +57,18 @@ export default function CreateVideo() {
       <h2>Nuevo Video</h2>
       <form>
         <div className="form_create">
-          <input 
+          <input
             required
-            placeholder="Título:"
+            placeholder="Título"
             type="text"
-            className={`custom-input ${formSubmitted && !titulo && "error"}`}
-            value={titulo}
-            onChange={(e) => setTitulo(e.target.value)}
+            className={`custom-input ${formSubmitted && !title && "error"}`}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
 
           <input
             required
-            placeholder="Link del Video:"
+            placeholder="Link del Video"
             type="text"
             className={`custom-input ${formSubmitted && !videoLink && "error"}`}
             value={videoLink}
@@ -77,14 +77,15 @@ export default function CreateVideo() {
 
           <input
             required
-            placeholder="Link de la Imagen del Video:"
+            placeholder="Link de la Imagen del Video"
             type="text"
             className={`custom-input ${formSubmitted && !imagenLink && "error"}`}
             value={imagenLink}
             onChange={(e) => setImagenLink(e.target.value)}
           />
 
-          <select required
+          <select
+            required
             className={`custom-input ${formSubmitted && !categoria && "error"}`}
             value={categoria}
             onChange={(e) => setCategoria(e.target.value)}
@@ -96,21 +97,21 @@ export default function CreateVideo() {
             <option value="Front-end">Front-end</option>
           </select>
 
-          <textarea 
+          <textarea
             required
-            placeholder="Descripción:"
-            className={`custom-input textarea ${formSubmitted && !descripcion && "error"}`}
-            value={descripcion}
-            onChange={(e) => setDescripcion(e.target.value)}
+            placeholder="Descripción"
+            className={`custom-input textarea ${formSubmitted && !description && "error"}`}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
 
           <input
             required
-            placeholder="Código de Seguridad:"
+            placeholder="Código de Seguridad"
             type="text"
-            className={`custom-input ${formSubmitted && !codigoSeguridad && "error"}`}
-            value={codigoSeguridad}
-            onChange={(e) => setCodigoSeguridad(e.target.value)}
+            className={`custom-input ${formSubmitted && !codigo && "error"}`}
+            value={codigo}
+            onChange={(e) => setCodigo(e.target.value)}
           />
         </div>
         <div className="button_create">
