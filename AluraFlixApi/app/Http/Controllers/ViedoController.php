@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +23,14 @@ class ViedoController extends Controller
         return response()->json($videos);
     }
 
+    public function novedades()
+    {
+        $videos = Videos::latest()->take(5)->get();
+
+        return response()->json($videos);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -36,7 +46,7 @@ class ViedoController extends Controller
     {
         $video = new Videos();
 
-       
+
         $video->title = $request->title;
         $video->description = $request->description;
         $video->link = $request->link;
@@ -93,7 +103,7 @@ class ViedoController extends Controller
     {
         $video = Videos::findOrFail($id);
         $video->delete();
-    
+
         return response()->json(['message' => 'Video eliminado correctamente']);
     }
 }
