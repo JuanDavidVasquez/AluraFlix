@@ -41,11 +41,9 @@ export default function Videos() {
   return (
     <>
       {Object.keys(groupedVideos).map((category) => (
-        <div className="videos_container">
-          <div key={category}>
-            <h2>{category}</h2>
-            <CustomCarousel data={groupedVideos[category]} />
-          </div>
+        <div className="videos_container" key={category}>
+          <h2>{category}</h2>
+          <CustomCarousel data={groupedVideos[category]} />
         </div>
       ))}
     </>
